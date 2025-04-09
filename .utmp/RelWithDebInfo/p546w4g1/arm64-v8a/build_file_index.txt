@@ -1,0 +1,2 @@
+C:\Users\vikra\Unity projects\Mixed Reality\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\vikra\Unity projects\Mixed Reality\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
