@@ -35,4 +35,6 @@ public class DustbinSpawn : MonoBehaviour
         Instantiate(SpawnPrefab,location,Quaternion.identity);
     }
 
+    
+
 }
