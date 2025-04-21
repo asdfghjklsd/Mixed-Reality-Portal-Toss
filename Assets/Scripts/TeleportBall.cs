@@ -7,40 +7,59 @@ public class TeleportBall : MonoBehaviour
     public GameObject portal2;
     public GameObject portal3;
     private int teleportedFrom = -1;
-    public AnchorPlacement anchorPlacement;
     private Vector3 tempVelocity;
-    private Rigidbody rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = new Vector3(0,0,1);
+        
+    }
+    void Update()
+    {
+        Debug.Log(teleportedFrom);
     }
     
     void OnTriggerEnter(Collider other)
     {
-        if(anchorPlacement.totalPortals == 2)
-        {
-            if(other.CompareTag("Portal 1") && teleportedFrom == -1)
+        
+            if(other.CompareTag("Ball") && teleportedFrom == -1 && CompareTag("Portal 1") && portal2.activeSelf == true)
             {
-                transform.position = portal2.transform.position;
-                tempVelocity = portal2.transform.rotation * Vector3.forward * rb.linearVelocity.magnitude;           
-                rb.linearVelocity = tempVelocity;
+                other.transform.position = portal2.transform.position;
+                tempVelocity = portal2.transform.rotation * Vector3.forward * other.GetComponent<Rigidbody>().linearVelocity.magnitude;           
+                other.GetComponent<Rigidbody>().linearVelocity = tempVelocity;
             }
 
-            if(other.CompareTag("Portal 2") && teleportedFrom == -1)
+            if(other.CompareTag("Ball") && teleportedFrom == -1 && CompareTag("Portal 2"))
             {
-                tempVelocity = portal1.transform.rotation * Vector3.forward * rb.linearVelocity.magnitude;           
-                rb.linearVelocity = tempVelocity;
+                if(portal3.activeSelf == true)
+                {
+                    other.transform.position = portal3.transform.position;
+                    tempVelocity = portal3.transform.rotation * Vector3.forward * other.GetComponent<Rigidbody>().linearVelocity.magnitude;           
+                    other.GetComponent<Rigidbody>().linearVelocity = tempVelocity;
+                }
+
+                if(portal3.activeSelf == false)
+                {
+                    other.transform.position = portal1.transform.position;
+                    tempVelocity = portal1.transform.rotation * Vector3.forward * other.GetComponent<Rigidbody>().linearVelocity.magnitude;           
+                    other.GetComponent<Rigidbody>().linearVelocity = tempVelocity;
+                }
+                
             }
-        }
+
+            if(other.CompareTag("Ball") && teleportedFrom == -1 && CompareTag("Portal 3"))
+            {
+                    other.transform.position = portal1.transform.position;
+                    tempVelocity = portal1.transform.rotation * Vector3.forward * other.GetComponent<Rigidbody>().linearVelocity.magnitude;           
+                    other.GetComponent<Rigidbody>().linearVelocity = tempVelocity;                
+            }
+        
     }
 
     void OnTriggerExit(Collider other)
     {
-        if(anchorPlacement.totalPortals == 2)
+        if(other.CompareTag("Ball"))
         {
-            if(other.CompareTag("Portal 1"))
+            if(CompareTag("Portal 1"))
             {
                 if (teleportedFrom == -1)
                 {
@@ -50,9 +69,13 @@ public class TeleportBall : MonoBehaviour
                 {
                     teleportedFrom = -1;
                 }
+                if(teleportedFrom == 3)
+                {
+                    teleportedFrom = -1;
+                }
             }
 
-            if(other.CompareTag("Portal 2"))
+            if(CompareTag("Portal 2"))
             {
                 if (teleportedFrom == -1)
                 {
@@ -62,7 +85,27 @@ public class TeleportBall : MonoBehaviour
                 {
                     teleportedFrom = -1;
                 }
+                if(teleportedFrom == 3)
+                {
+                    teleportedFrom = -1;
+                }
             }
-        }
+
+            if(CompareTag("Portal 3"))
+            {
+                if (teleportedFrom == -1)
+                {
+                    teleportedFrom = 3;
+                }
+                if(teleportedFrom == 1)
+                {
+                    teleportedFrom = -1;
+                }
+                if(teleportedFrom == 2)
+                {
+                    teleportedFrom = -1;
+                }
+            }
+        }   
     }
 }

@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Mixed-Reality-Portal-Toss.sln"
+    "dotnet.defaultSolution": "Mixed Reality.sln"
 }
