@@ -6,7 +6,8 @@ using UnityEngine;
 public class TeleportBall : MonoBehaviour
 {
     private Rigidbody rb;
-    float tempVelocity;
+    Vector3 tempVelocity;
+    Transform targetPortal, sourcePortal;
     private string lastPortal = "";
 
     void Start()
@@ -26,7 +27,6 @@ public class TeleportBall : MonoBehaviour
 
         // Determine target portal
         Vector3 targetPosition = Vector3.zero;
-        Quaternion targetRotation = Quaternion.identity;
         string nextPortalTag = "";
 
         switch (tag)
@@ -37,9 +37,11 @@ public class TeleportBall : MonoBehaviour
             {
                 nextPortalTag = "Portal 2";
                 targetPosition = GameObject.FindGameObjectWithTag("Spawn 2").transform.position;
-                targetRotation = GameObject.FindGameObjectWithTag("Portal 2").transform.rotation;
-                tempVelocity = rb.linearVelocity.magnitude;
-                
+
+                targetPortal = GameObject.FindGameObjectWithTag("Portal 2").transform;
+                sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+
+                tempVelocity = rb.linearVelocity;                
             }
             break;
 
@@ -47,31 +49,40 @@ public class TeleportBall : MonoBehaviour
                 if (GameObject.FindGameObjectWithTag("Portal 3") != null)
                 {
                     nextPortalTag = "Portal 3";
+
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 3").transform.position;
-                    targetRotation = GameObject.FindGameObjectWithTag("Portal 3").transform.rotation;
-                    tempVelocity = rb.linearVelocity.magnitude;
+                    targetPortal = GameObject.FindGameObjectWithTag("Portal 3").transform;
+                    sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+
+                    tempVelocity = rb.linearVelocity;
                 }
                 else
                 {
                     nextPortalTag = "Portal 1";
+
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
-                    targetRotation = GameObject.FindGameObjectWithTag("Portal 1").transform.rotation;
-                    tempVelocity = rb.linearVelocity.magnitude;
+                    targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
+                    sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                    
+                    tempVelocity = rb.linearVelocity;
                 }
                 break;
 
             case "Portal 3":
                 nextPortalTag = "Portal 1";
+
                 targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
-                targetRotation = GameObject.FindGameObjectWithTag("Portal 1").transform.rotation;
-                tempVelocity = rb.linearVelocity.magnitude;
+                targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
+                sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+
+                tempVelocity = rb.linearVelocity;               
                 break;
         }
 
         if (nextPortalTag != "")
         {
             lastPortal = tag;
-            StartCoroutine(Teleport(targetPosition, targetRotation, tempVelocity));
+            StartCoroutine(Teleport(targetPosition, targetPortal, sourcePortal, tempVelocity));
         }
     }
 
@@ -84,16 +95,20 @@ public class TeleportBall : MonoBehaviour
         }
     }
 
-    IEnumerator Teleport(Vector3 targetPosition, Quaternion targetRotation, float tempVelocity)
+    IEnumerator Teleport(Vector3 targetPosition, Transform targetPortal, Transform sourcePortal, Vector3 tempVelocity)
     {
         rb.linearVelocity = Vector3.zero;
 
         // Do teleport
-        transform.position = targetPosition + (targetRotation * Vector3.forward * 1f);
+        transform.position = targetPosition + (targetPortal.forward * 1f);
 
         // Apply velocity in portal direction
-        Vector3 newVelocity = targetRotation * Vector3.forward * tempVelocity;
+        Vector3 localVelocity = sourcePortal.InverseTransformDirection(tempVelocity);
+        localVelocity.y = - localVelocity.y;
+        Vector3 newVelocity = targetPortal.TransformDirection(localVelocity);
+
         yield return null; // wait a frame just in case
-        rb.linearVelocity = newVelocity;
+
+        rb.linearVelocity = -newVelocity;
     }
 }
