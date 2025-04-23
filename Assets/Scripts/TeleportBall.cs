@@ -88,6 +88,7 @@ public class TeleportBall : MonoBehaviour
             lastPortal = tag;
             StartCoroutine(Teleport(targetPosition, targetPortal, sourcePortal, tempVelocity));
         }
+        Debug.Log("ASDLADLASLDLAD" + score);
     }
 
     void OnTriggerExit(Collider other)

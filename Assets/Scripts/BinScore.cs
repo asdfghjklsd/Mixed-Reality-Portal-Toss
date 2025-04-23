@@ -1,9 +1,11 @@
-    using UnityEngine;
+using Oculus.VoiceSDK.UX;
+using UnityEngine;
 
 public class BinScore : MonoBehaviour
 {
+    public float Scorebin = 0;
     public TeleportBall ball;
-    public float FinalScore = 0;
+    private float Binpoints = 50;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,20 +17,29 @@ public class BinScore : MonoBehaviour
     {
         
     }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
             if(ball.score != 0)
             {
-                FinalScore = ball.score + 50;
+                ScoreAdd();
+                Destroy(other);
             }
             else
             {
-                FinalScore = 0;
+                Destroy(other);
             }
-           
-            Destroy(other, 0);
+            
         }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        Debug.Log("DingleBERRY");
+    }
+    public void ScoreAdd()
+    {
+        Scorebin += ball.score + Binpoints;
     }
 }

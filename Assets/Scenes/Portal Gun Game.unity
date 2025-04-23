@@ -5193,63 +5193,6 @@ MonoBehaviour:
   _numLinePoints: 20
   _targetlessLength: 0.5
   _tubeRenderer: {fileID: 421722216}
---- !u!1001 &426040155
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.259
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 16.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.277
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 67629809348552295, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2216525505929475203, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
-      propertyPath: m_Name
-      value: Ball
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fa307ece0a783474492f951c532a7fcd, type: 3}
 --- !u!1 &427564301
 GameObject:
   m_ObjectHideFlags: 0
@@ -15004,15 +14947,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052482719}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14148366, y: 0.070816554, z: 0.012087735, w: 0.9873304}
-  m_LocalPosition: {x: 0.044, y: 0.385, z: 0.096}
+  m_LocalRotation: {x: 0.14100538, y: 0.03805823, z: 0.016769767, w: 0.9891349}
+  m_LocalPosition: {x: 0.044, y: 0.385, z: 0.121}
   m_LocalScale: {x: 0.36670715, y: 0.36670715, z: 0.36670715}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 998353496}
   - {fileID: 1265961558}
   m_Father: {fileID: 1331574198}
-  m_LocalEulerAnglesHint: {x: 16.121, y: 8.576, z: 2.62}
+  m_LocalEulerAnglesHint: {x: 16.121, y: 4.778, z: 2.62}
 --- !u!1 &1054308944
 GameObject:
   m_ObjectHideFlags: 0
@@ -27808,30 +27751,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1933321770}
-  - component: {fileID: 1933321769}
   - component: {fileID: 1933321771}
   m_Layer: 0
-  m_Name: ScoreManager
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1933321769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933321768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4705669175d5b054bbec54849db53b40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addedscore: {fileID: 898842535}
-  bin: {fileID: 7172571733643192081, guid: 0ce3c7f21fa4e0545b51970f844b145d, type: 3}
-  FinalScore: 0
 --- !u!4 &1933321770
 Transform:
   m_ObjectHideFlags: 0
@@ -30560,5 +30487,4 @@ SceneRoots:
   - {fileID: 8666002223690479171}
   - {fileID: 2024131244}
   - {fileID: 716665034}
-  - {fileID: 426040155}
   - {fileID: 1933321770}
