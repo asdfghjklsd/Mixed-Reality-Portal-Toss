@@ -27752,6 +27752,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1933321770}
   - component: {fileID: 1933321771}
+  - component: {fileID: 1933321772}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -27787,6 +27788,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userManual: {fileID: 1052482719}
+--- !u!114 &1933321772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933321768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 821a701ec5975b8449d33b4987e94021, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 1695271865365053877, guid: 0ce3c7f21fa4e0545b51970f844b145d, type: 3}
+  scoreboardtext: {fileID: 898842535}
 --- !u!1 &1936608184
 GameObject:
   m_ObjectHideFlags: 0
