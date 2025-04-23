@@ -39,22 +39,47 @@ public class AnchorPlacement : MonoBehaviour
             lr.SetPosition(0 ,rayOrigin);
             
 
-            if(OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
+            if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
                 lr.enabled = true;
                 lr.SetPosition(1, hit.point);
             }    
-            if(OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch) != true)
+            if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch) != true)
             {
                 lr.enabled = false;
             }        
             
 
-            if(anchorhit != null && OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
+            if(anchorhit != null && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
                 Quaternion rotation = Quaternion.LookRotation(-hit.normal);
 
                     CreateSpatialAnchor(hit.point, rotation);
+            }
+        }
+
+        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+        {
+            switch(portalCount)
+            {
+                case 1:
+                {
+                    portalCount = 0;
+                    Portal1.SetActive(false);
+                    break;
+                }
+                case 2:
+                {
+                    portalCount = 1;
+                    Portal2.SetActive(false);
+                    break;
+                }
+                case 3:
+                {
+                    portalCount = 2;
+                    Portal3.SetActive(false);
+                    break;
+                }
             }
         }
       

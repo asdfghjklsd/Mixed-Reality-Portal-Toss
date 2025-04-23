@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class BallShooter : MonoBehaviour
 {
-    public GameObject ballPrefab;
-    public GameObject ballSpawn;
+    public GameObject ballPrefab, ballSpawn, canvas, forceBar;
+    
     [SerializeField]private float minForce = 0.5f;
-    [SerializeField]private float ballForce = 1f;
+    [SerializeField]private float ballForce = 4f;
+    [SerializeField] private float maxForceSeconds = 2.5f;
     private float ballForceCounter = 0f;
     private float shootForce = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        canvas.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,10 +20,16 @@ public class BallShooter : MonoBehaviour
     {
         if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch))
         {
+            canvas.SetActive(true);
             ballForceCounter += Time.deltaTime;
-            Mathf.Clamp(ballForceCounter, 0, 2.5f);
+            ballForceCounter = Mathf.Clamp(ballForceCounter, 0, maxForceSeconds);
+            forceBar.transform.localScale = new Vector3(1, ballForceCounter/maxForceSeconds, 1);
 
             shootForce = ballForceCounter * ballForce;
+        }
+        if(!OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch))
+        {
+            canvas.SetActive(false);
         }
 
         if(OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch) && ballForceCounter > minForce)
@@ -37,6 +44,5 @@ public class BallShooter : MonoBehaviour
         {
             ballForceCounter = 0;
         }
-        
     }
 }
