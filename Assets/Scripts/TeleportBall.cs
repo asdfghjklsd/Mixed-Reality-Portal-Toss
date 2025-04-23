@@ -6,6 +6,7 @@ using UnityEngine;
 public class TeleportBall : MonoBehaviour
 {
     private Rigidbody rb;
+    public float score = 0;
     Vector3 tempVelocity;
     Transform targetPortal, sourcePortal;
     private string lastPortal = "";
@@ -53,6 +54,7 @@ public class TeleportBall : MonoBehaviour
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 3").transform.position;
                     targetPortal = GameObject.FindGameObjectWithTag("Portal 3").transform;
                     sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                    score+=10;
 
                     tempVelocity = rb.linearVelocity;
                 }
@@ -63,6 +65,7 @@ public class TeleportBall : MonoBehaviour
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
                     targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
                     sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                    score +=10;
                     
                     tempVelocity = rb.linearVelocity;
                 }
@@ -74,6 +77,7 @@ public class TeleportBall : MonoBehaviour
                 targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
                 targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
                 sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                score +=10;
 
                 tempVelocity = rb.linearVelocity;               
                 break;
@@ -109,6 +113,6 @@ public class TeleportBall : MonoBehaviour
 
         yield return null; // wait a frame just in case
 
-        rb.linearVelocity = -newVelocity;
+        rb.linearVelocity = newVelocity;
     }
 }

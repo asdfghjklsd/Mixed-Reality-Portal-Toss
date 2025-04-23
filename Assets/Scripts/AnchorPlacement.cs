@@ -52,13 +52,13 @@ public class AnchorPlacement : MonoBehaviour
 
             if(anchorhit != null && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
-                Quaternion rotation = Quaternion.LookRotation(-hit.normal);
+                Quaternion rotation = Quaternion.LookRotation(hit.normal);
 
                     CreateSpatialAnchor(hit.point, rotation);
             }
         }
 
-        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch))
+        if(OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTouch))
         {
             switch(portalCount)
             {
