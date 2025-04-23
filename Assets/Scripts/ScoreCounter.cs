@@ -2,16 +2,19 @@ using UnityEngine;
 using Unity.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class ScoreCounter : MonoBehaviour
 {
     public Text addedscore;
-    public BinScore bin;
-    public float FinalScore = 0;
+    public float Score = 0;
+    public GameObject bin;
+    private BinScore FinalScore;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        FinalScore = 0;
+        FinalScore = bin.GetComponentInChildren<BinScore>();
+        Score = 0;
         addedscore.text = "0";
     }
 
@@ -22,7 +25,9 @@ public class ScoreCounter : MonoBehaviour
     }
     public void ScoreAdd()
     {
-        FinalScore = FinalScore + bin.FinalScore;
-        addedscore.text = FinalScore.ToString();
+        Score += FinalScore.FinalScore;
+        addedscore.text = Score.ToString();
     }
+
+
 }
