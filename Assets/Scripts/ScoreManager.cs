@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public DebugScript score;
     public Text scoreboardtext;
+    private float Endscore = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        scoreboardtext.text = "0";
+        scoreboardtext.text = "50";
     }
 
     // Update is called once per frame
@@ -17,8 +17,9 @@ public class ScoreManager : MonoBehaviour
         
     }
 
-    public void ScoreAdd()
+    public void ScoreAdd(float points)
     {
-        scoreboardtext.text = score.FinalScore.ToString();
+        Endscore += points;
+        scoreboardtext.text = Endscore.ToString();
     }
 }

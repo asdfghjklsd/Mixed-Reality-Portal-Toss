@@ -13161,8 +13161,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10.081238, y: -9.787689}
-  m_SizeDelta: {x: 100, y: 65}
+  m_AnchoredPosition: {x: -10.045704, y: -9.787689}
+  m_SizeDelta: {x: 150, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &905312039
 GameObject:
@@ -14947,15 +14947,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1052482719}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14100538, y: 0.03805823, z: 0.016769767, w: 0.9891349}
-  m_LocalPosition: {x: 0.044, y: 0.385, z: 0.121}
+  m_LocalRotation: {x: 0.14074536, y: 0.023601303, z: 0.0188283, w: 0.9895854}
+  m_LocalPosition: {x: 0.044, y: 0.385, z: 0.148}
   m_LocalScale: {x: 0.36670715, y: 0.36670715, z: 0.36670715}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 998353496}
   - {fileID: 1265961558}
   m_Father: {fileID: 1331574198}
-  m_LocalEulerAnglesHint: {x: 16.121, y: 4.778, z: 2.62}
+  m_LocalEulerAnglesHint: {x: 16.121, y: 3.104, z: 2.62}
 --- !u!1 &1054308944
 GameObject:
   m_ObjectHideFlags: 0
@@ -27800,7 +27800,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 821a701ec5975b8449d33b4987e94021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 1695271865365053877, guid: 0ce3c7f21fa4e0545b51970f844b145d, type: 3}
   scoreboardtext: {fileID: 898842535}
 --- !u!1 &1936608184
 GameObject:
