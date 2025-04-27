@@ -6,7 +6,6 @@ using UnityEngine;
 public class TeleportBall : MonoBehaviour
 {
     private Rigidbody rb;
-    public float score = 30;
     Vector3 tempVelocity;
     Transform targetPortal, sourcePortal;
     private string lastPortal = "";
@@ -43,7 +42,7 @@ public class TeleportBall : MonoBehaviour
                 sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
 
                 tempVelocity = rb.linearVelocity;      
-                //score +=10;          
+                          
             }
             break;
 
@@ -55,7 +54,7 @@ public class TeleportBall : MonoBehaviour
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 3").transform.position;
                     targetPortal = GameObject.FindGameObjectWithTag("Portal 3").transform;
                     sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
-                    //score+=10;
+                    
 
                     tempVelocity = rb.linearVelocity;
                 }
@@ -66,7 +65,7 @@ public class TeleportBall : MonoBehaviour
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
                     targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
                     sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
-                    //score +=10;
+                    
                     
                     tempVelocity = rb.linearVelocity;
                 }
@@ -78,7 +77,7 @@ public class TeleportBall : MonoBehaviour
                 targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
                 targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
                 sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
-                //score +=10;
+                
 
                 tempVelocity = rb.linearVelocity;               
                 break;
@@ -116,9 +115,4 @@ public class TeleportBall : MonoBehaviour
 
         rb.linearVelocity = newVelocity;
     }
-
-    /*public void Ballscore(float binscore)
-    {
-        score += binscore;
-    }*/
 }
