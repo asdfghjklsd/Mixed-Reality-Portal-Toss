@@ -3,8 +3,9 @@ using UnityEngine;
 public class Bin : MonoBehaviour
 {
     public BallScore ballScore;
-    public float binscore = 50;
-    public float finalscore;
+    public int binscore = 50;
+    public int finalscore;
+    public ScoreManager scoremanager;
     void Start()
     {
         finalscore = 0;
@@ -12,7 +13,7 @@ public class Bin : MonoBehaviour
 
     void Update()
     {
-        
+        scoremanager.AddScore(finalscore);
     }
     void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,7 @@ public class Bin : MonoBehaviour
         {
             if(ballScore.score != 0)
             {
-                finalscore = binscore + ballScore.score;
+                finalscore = ballScore.score + binscore;
             }
         }
     }
