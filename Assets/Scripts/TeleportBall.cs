@@ -8,6 +8,7 @@ public class TeleportBall : MonoBehaviour
     private Rigidbody rb;
     Vector3 tempVelocity;
     Transform targetPortal, sourcePortal;
+    BallScore ballScore;
     private string lastPortal = "";
 
     void Start()
@@ -40,6 +41,10 @@ public class TeleportBall : MonoBehaviour
 
                 targetPortal = GameObject.FindGameObjectWithTag("Portal 2").transform;
                 sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                GetComponent<BallScore>().score += 10;
+                Debug.Log("BallScore Added" + GetComponent<BallScore>().score);
+                
+                
 
                 tempVelocity = rb.linearVelocity;      
                           
@@ -54,6 +59,8 @@ public class TeleportBall : MonoBehaviour
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 3").transform.position;
                     targetPortal = GameObject.FindGameObjectWithTag("Portal 3").transform;
                     sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                    GetComponent<BallScore>().score += 10;
+                    Debug.Log("BallScore Added" + GetComponent<BallScore>().score);
                     
 
                     tempVelocity = rb.linearVelocity;
@@ -65,6 +72,8 @@ public class TeleportBall : MonoBehaviour
                     targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
                     targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
                     sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                    GetComponent<BallScore>().score += 10;
+                    Debug.Log("BallScore Added" + GetComponent<BallScore>().score);
                     
                     
                     tempVelocity = rb.linearVelocity;
@@ -77,6 +86,8 @@ public class TeleportBall : MonoBehaviour
                 targetPosition = GameObject.FindGameObjectWithTag("Spawn 1").transform.position;
                 targetPortal = GameObject.FindGameObjectWithTag("Portal 1").transform;
                 sourcePortal = GameObject.FindGameObjectWithTag(tag).transform;
+                GetComponent<BallScore>().score += 10;
+                Debug.Log("BallScore Added" + GetComponent<BallScore>().score);
                 
 
                 tempVelocity = rb.linearVelocity;               

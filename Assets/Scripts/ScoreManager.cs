@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void UpdateScore()
     {
-        scoreboardtext.text += FinalScore.ToString();
+        scoreboardtext.text = FinalScore.ToString();
     }
 }
 

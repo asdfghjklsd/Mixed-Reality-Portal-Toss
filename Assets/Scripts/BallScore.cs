@@ -14,11 +14,16 @@ public class BallScore : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Portal 1") || other.gameObject.CompareTag("Portal 2") || other.gameObject.CompareTag("Portal 3"))
         {
             score += 10;
         }
-    }
+    }*/
+    /*public int ScoreAdd()
+    {
+        score += 10;
+        return score;
+    }*/
 }
