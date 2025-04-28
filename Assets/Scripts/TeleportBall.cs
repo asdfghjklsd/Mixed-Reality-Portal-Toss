@@ -108,7 +108,6 @@ public class TeleportBall : MonoBehaviour
         {
             Debug.Log("Exited portal: " + other.tag);
             lastPortal = ""; // reset lock
-            GetComponent<BallScore>().score += 10;
         }
     }
 
