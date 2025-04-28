@@ -14,6 +14,7 @@ public class TeleportBall : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Destroy(gameObject, 10);
     }
 
     void OnTriggerEnter(Collider other)
