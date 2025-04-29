@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  timer: 0
 --- !u!82 &9139845837597192515
 AudioSource:
   m_ObjectHideFlags: 0
@@ -349,11 +350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5582815487951111225, guid: af1e3c00156587a4ca1e4e737b047575, type: 3}
       propertyPath: NoiseModule.strength.scalar
-      value: 0.005
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 5582815487951111225, guid: af1e3c00156587a4ca1e4e737b047575, type: 3}
       propertyPath: EmissionModule.rateOverDistance.scalar
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5582815487951111225, guid: af1e3c00156587a4ca1e4e737b047575, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.ctime3

@@ -10,7 +10,7 @@ public class Bin : MonoBehaviour
     public int finalscore = 0;
     public ScoreManager scoremanager;
     public FindSpawnPositions spawnBin;
-    public ParticleSystem psBin;
+    public ParticleSystem psBin, psBin2, psBin3;
     void Start()
     {
         
@@ -43,6 +43,8 @@ public class Bin : MonoBehaviour
 
         yield return new WaitForSeconds(5);
         psBin.Stop();
+        psBin2.Stop();
+        psBin3.Stop();
         GetComponent<MeshCollider>().enabled = true;
         spawnBin.StartSpawn();
     }

@@ -47,8 +47,7 @@ public class AnchorPlacement : MonoBehaviour
             if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch) != true)
             {
                 lr.enabled = false;
-            }        
-            
+            }            
 
             if(anchorhit != null && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
