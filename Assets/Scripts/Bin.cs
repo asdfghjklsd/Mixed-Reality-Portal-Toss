@@ -10,6 +10,7 @@ public class Bin : MonoBehaviour
     public int finalscore = 0;
     public ScoreManager scoremanager;
     public FindSpawnPositions spawnBin;
+    public ParticleSystem psBin;
     void Start()
     {
         
@@ -37,8 +38,11 @@ public class Bin : MonoBehaviour
     IEnumerator NewSpawn()
     {
         GetComponent<MeshCollider>().enabled = false;
+        psBin.Play();
+        GetComponent<AudioSource>().Play();
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
+        psBin.Stop();
         GetComponent<MeshCollider>().enabled = true;
         spawnBin.StartSpawn();
     }
