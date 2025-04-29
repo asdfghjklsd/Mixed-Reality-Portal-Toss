@@ -10,7 +10,6 @@ public class AnchorPlacement : MonoBehaviour
     public GameObject Portal3;
     public GameObject GunSpawn;
     private LineRenderer lr;
-    private ParticleSystem portalparticles;
     public int totalPortals = 2;
     private bool isInitialized;
     private int portalCount = 0;
@@ -25,7 +24,6 @@ public class AnchorPlacement : MonoBehaviour
         Portal2.SetActive(false);
         Portal3.SetActive(false);
         lr = GetComponent<LineRenderer>();
-        portalparticles = GetComponentInChildren<ParticleSystem>();
         lr.enabled = false;
     }
  
@@ -94,9 +92,6 @@ public class AnchorPlacement : MonoBehaviour
         {
             Portal3.transform.position = hitPoint;
             Portal3.transform.rotation = rotation;
-            portalparticles.transform.position = hitPoint;
-            portalparticles.transform.rotation = rotation;
-            portalparticles.Play();
             Portal3.SetActive(true);
             portalCount = 3;
         }
@@ -105,9 +100,6 @@ public class AnchorPlacement : MonoBehaviour
         {
             Portal2.transform.position = hitPoint;
             Portal2.transform.rotation = rotation;
-            portalparticles.transform.position = hitPoint;
-            portalparticles.transform.rotation = rotation;
-            portalparticles.Play();
             Portal2.SetActive(true);
             portalCount = 2;
         }
@@ -116,9 +108,6 @@ public class AnchorPlacement : MonoBehaviour
         {
             Portal1.transform.position = hitPoint;
             Portal1.transform.rotation = rotation;
-            portalparticles.transform.position = hitPoint;
-            portalparticles.transform.rotation = rotation;
-            portalparticles.Play();
             Portal1.SetActive(true);
             portalCount = 1;
         }

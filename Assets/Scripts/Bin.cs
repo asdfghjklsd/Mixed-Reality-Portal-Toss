@@ -26,7 +26,7 @@ public class Bin : MonoBehaviour
         {
             if(other.GetComponent<BallScore>().score != 0)
             {
-                finalscore = (other.GetComponent<BallScore>().score * Mathf.FloorToInt(other.GetComponent<BallScore>().timer)) + binscore;
+                finalscore = (other.GetComponent<BallScore>().score * Mathf.FloorToInt(other.GetComponent<BallScore>().timer * 1.5f)) + binscore;
                 scoremanager.AddScore(finalscore);
                 Debug.Log(finalscore + "added to scoremanager");
                 StartCoroutine(NewSpawn());

@@ -6,7 +6,10 @@ using UnityEngine;
 public class TeleportBall : MonoBehaviour
 {
     private Rigidbody rb;
-    private ParticleSystem psBall;
+    public ParticleSystem psBall;
+    public ParticleSystem ballPoof;
+    public AudioClip poofSound;
+    public AudioSource poof;
     Vector3 tempVelocity;
     Transform targetPortal, sourcePortal;
     BallScore ballScore;
@@ -16,7 +19,6 @@ public class TeleportBall : MonoBehaviour
     {
         Destroy(gameObject, 10);
         rb = GetComponent<Rigidbody>();
-        psBall = GetComponentInChildren<ParticleSystem>();
     }   
 
     void OnTriggerEnter(Collider other)
@@ -113,7 +115,6 @@ public class TeleportBall : MonoBehaviour
     {
         if (other.tag == lastPortal)
         {
-            psBall.Play();
             Debug.Log("Exited portal: " + other.tag);
             lastPortal = ""; // reset lock
             GetComponent<BallScore>().score += 10;
@@ -123,17 +124,22 @@ public class TeleportBall : MonoBehaviour
     IEnumerator Teleport(Vector3 targetPosition, Transform targetPortal, Transform sourcePortal, Vector3 tempVelocity)
     {
         rb.linearVelocity = Vector3.zero;
+        ballPoof.Play();
+        yield return null;
 
-        // Do teleport
-        transform.position = targetPosition + (targetPortal.forward * 1f);
+        ballPoof.Pause();
+        yield return null;
 
-        // Apply velocity in portal direction
+        transform.position = targetPosition + (targetPortal.forward * 1.1f);
         Vector3 localVelocity = sourcePortal.InverseTransformDirection(tempVelocity);
         localVelocity.y = - localVelocity.y;
         Vector3 newVelocity = targetPortal.TransformDirection(localVelocity);
 
-        yield return null; // wait a frame just in case
-
+        yield return null;
+        psBall.Play();
+        poof.pitch = Random.Range(0.8f, 1.2f);
+        poof.PlayOneShot(poofSound);
+        ballPoof.Play();
         rb.linearVelocity = newVelocity;
     }
 }
