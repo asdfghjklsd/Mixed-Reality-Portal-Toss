@@ -55,9 +55,11 @@ public class AnchorPlacement : MonoBehaviour
             if(anchorhit != null && OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
             {
                 Quaternion rotation = Quaternion.LookRotation(hit.normal);
+                var tempPos = hit.point;
+                var tempRot = rotation;
 
                     //CreateSpatialAnchor(hit.point, rotation);
-                    StartCoroutine(PortalSpawn(hit.point, rotation));
+                    StartCoroutine(PortalSpawn(tempPos, tempRot));
             }
         }
 
@@ -120,10 +122,8 @@ public class AnchorPlacement : MonoBehaviour
     {
         if(portalCount <= 2)
         {
-            var tempPos = hitPoint;
-            var tempRot = rotation;
-            portalps.transform.position = tempPos;
-            portalps.transform.rotation = tempRot;
+            portalps.transform.position = hitPoint;
+            portalps.transform.rotation = rotation;
             portalps.Play();
         }
         yield return new WaitForSeconds(0.2f);
