@@ -15,6 +15,7 @@ public class AnchorPlacement : MonoBehaviour
     private bool isInitialized;
     private int portalCount = 0;
     public ParticleSystem portalps;
+    public PortalGunShot portalGunShot;
 
 
 
@@ -58,8 +59,8 @@ public class AnchorPlacement : MonoBehaviour
                 var tempPos = hit.point;
                 var tempRot = rotation;
 
-                    //CreateSpatialAnchor(hit.point, rotation);
-                    StartCoroutine(PortalSpawn(tempPos, tempRot));
+                //CreateSpatialAnchor(hit.point, rotation);
+                StartCoroutine(PortalSpawn(tempPos, tempRot));
             }
         }
 
@@ -125,6 +126,7 @@ public class AnchorPlacement : MonoBehaviour
             portalps.transform.position = hitPoint;
             portalps.transform.rotation = rotation;
             portalps.Play();
+            portalGunShot.PortalShot();
         }
         yield return new WaitForSeconds(0.2f);
         CreateSpatialAnchor(hitPoint, rotation);

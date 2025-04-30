@@ -11,12 +11,10 @@ public class PortalGunShot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void PortalShot()
     {
-        if(OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch))
-        {
-            particles.GetComponent<ParticleSystem>().Play();
-            audioSource.Play();
-        }
+        particles.GetComponent<ParticleSystem>().Play();
+        audioSource.Play();
     }
+            
 }
