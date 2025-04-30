@@ -118,9 +118,14 @@ public class AnchorPlacement : MonoBehaviour
     }
     IEnumerator PortalSpawn(Vector3 hitPoint, Quaternion rotation)
     {
-        portalps.transform.position = hitPoint;
-        portalps.transform.rotation = rotation;
-        portalps.Play();
+        if(portalCount <= 2)
+        {
+            var tempPos = hitPoint;
+            var tempRot = rotation;
+            portalps.transform.position = tempPos;
+            portalps.transform.rotation = tempRot;
+            portalps.Play();
+        }
         yield return new WaitForSeconds(0.2f);
         CreateSpatialAnchor(hitPoint, rotation);
     }
