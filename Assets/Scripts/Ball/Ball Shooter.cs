@@ -9,6 +9,7 @@ public class BallShooter : MonoBehaviour
     [SerializeField] private float maxForceSeconds = 2.5f;
     private float ballForceCounter = 0f;
     private float shootForce = 0f;
+    public ScoreManager scoreManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +38,7 @@ public class BallShooter : MonoBehaviour
             particles.GetComponent<ParticleSystem>().Play();
             var ball = Instantiate(ballPrefab, ballSpawn.transform.position, Quaternion.identity);
             ball.GetComponent<Rigidbody>().AddForce(ballSpawn.transform.rotation * Vector3.forward * shootForce, ForceMode.Impulse);
+            scoreManager.AddShot();
 
             ballForceCounter = 0;
         }

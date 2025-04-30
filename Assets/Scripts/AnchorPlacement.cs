@@ -1,4 +1,5 @@
 using System.Collections;
+using JetBrains.Annotations;
 using Meta.XR.MRUtilityKit;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,6 +14,8 @@ public class AnchorPlacement : MonoBehaviour
     public int totalPortals = 2;
     private bool isInitialized;
     private int portalCount = 0;
+    public ParticleSystem portalps;
+
 
 
     public void Initialized() => isInitialized = true;
@@ -53,7 +56,8 @@ public class AnchorPlacement : MonoBehaviour
             {
                 Quaternion rotation = Quaternion.LookRotation(hit.normal);
 
-                    CreateSpatialAnchor(hit.point, rotation);
+                    //CreateSpatialAnchor(hit.point, rotation);
+                    StartCoroutine(PortalSpawn(hit.point, rotation));
             }
         }
 
@@ -111,6 +115,14 @@ public class AnchorPlacement : MonoBehaviour
             Portal1.SetActive(true);
             portalCount = 1;
         }
-
     }
+    IEnumerator PortalSpawn(Vector3 hitPoint, Quaternion rotation)
+    {
+        portalps.transform.position = hitPoint;
+        portalps.transform.rotation = rotation;
+        portalps.Play();
+        yield return new WaitForSeconds(0.2f);
+        CreateSpatialAnchor(hitPoint, rotation);
+    }
+    
 }

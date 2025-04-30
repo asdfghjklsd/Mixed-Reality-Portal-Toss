@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     private float FinalScore = 0;
     private float highScore = 0;
     private int totalShots = 0;
+    private float timer = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,11 +21,6 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch))
-        {
-            totalShots += 1;
-        }
-        
         shots.text = "SHOTS: " + totalShots.ToString();
     }
 
@@ -49,6 +45,11 @@ public class ScoreManager : MonoBehaviour
     {
         hiScore.text = "HI. SCORE: " + highScore.ToString();
         lastScore.text = "LAST SCORE: " + FinalScore.ToString();
+    }
+
+    public void AddShot()
+    {
+        totalShots += 1;
     }
 }
 
